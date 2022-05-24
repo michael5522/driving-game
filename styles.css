@@ -2,6 +2,22 @@
   background-color: green;
 }
 
-.f1-img{
+#f1-img{
   width: 150px;
+}
+
+.ArrowUp{
+  transform: rotate(270deg);
+}
+
+.ArrowRight {
+  transform: rotate(0deg);
+}
+
+.ArrowDown {
+  transform: rotate(90deg);
+}
+
+.ArrowLeft {
+  transform: rotate(180deg);
 }
