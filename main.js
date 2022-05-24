@@ -6,7 +6,8 @@ var vehicle = {
   location: {
     x: null,
     y: null
-  }
+  },
+  onOff: false
 }
 
 var carPositionListen = document.addEventListener('keydown', function(event){
@@ -23,14 +24,22 @@ var rect = carElement.getBoundingClientRect();
 vehicle.location.x =  rect.x;
 vehicle.location.y = rect.y;
 
-
+var intervalId = null;
 var spaceButtonListen = document.addEventListener('keydown', function(event){
   if(event.code === 'Space'){
-    setInterval(moveCar, 16);
+
+    vehicle.onOff = !vehicle.onOff
+    if (!vehicle.onOff) {
+      clearInterval(intervalId)
+    }
+    if(vehicle.onOff){
+      intervalId = setInterval(moveCar, 16);
+    }
   }
 });
 
- function moveCar(){
-  vehicle.location.y += 5;
-   carElement.style.left = vehicle.location.y+'px';
- }
+
+function moveCar(){
+    vehicle.location.y += 5;
+    carElement.style.left = vehicle.location.y + 'px';
+}
